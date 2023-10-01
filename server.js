@@ -13,7 +13,7 @@ app.use(cors())
 app.use(fileUpload({}))
 app.use(express.json())
 
-app.use(express.static(indexDir));
+app.use(express.static('public'))
 
 app.use(router)
 

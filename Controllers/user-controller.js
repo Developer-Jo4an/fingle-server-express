@@ -14,7 +14,7 @@ class UserController {
     async getUserInfo(req, res) {
         try {
             const {id} = req.params
-            !id ? handleError(e, res) : null
+            !id ? res.status(404).json({message: 'Invalid id'}) : null
             const userData = await UserService.getUserInfo(id)
             res.json(userData)
         } catch (e) {handleError(e, res)}
