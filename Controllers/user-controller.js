@@ -23,10 +23,20 @@ class UserController {
     async getTransactions(req, res) {
         try {
             const {id} = req.params
-            const {interval} = req.body
             !id ? res.status(404).json({message: 'Invalid id'}) : null
+            const {interval} = req.body
             const transactions = await UserService.getTransactions(id, interval)
             res.json(transactions)
+        } catch (e) {handleError(e, res)}
+    }
+
+    async addTransaction(req, res) {
+        try {
+            const {id} = req.params
+            !id ? res.status(404).json({message: 'Invalid id'}) : null
+            const {interval, transaction} = req.body
+            const newTransactions = await UserService.addTransaction(id, interval, transaction)
+            res.json(newTransactions)
         } catch (e) {handleError(e, res)}
     }
 }

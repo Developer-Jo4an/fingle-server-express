@@ -54,20 +54,19 @@ const purposeSchema = new Schema ({
     deadLine:{type : Date,required:true}
 })
 
-
-
 const transactionSchema = new Schema ({
     transactionType: {type: String, required: true},
     date: {type: Date, required: true},
     card: {
-        type: {
+        type: Object,
+        of: {
             _id: Schema.Types.ObjectId,
             cardName: String,
             bankName: String,
         },
         required: true
     },
-    transferCard: {name: String, _id: String, bankName: String},
+    transferCard: {_id: String, cardName: String, bankName: String},
     count: {type: Number, required: true},
     message: String,
     category: {

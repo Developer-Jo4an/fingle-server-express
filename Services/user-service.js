@@ -26,6 +26,19 @@ class UserService {
 
         } catch (e) {handleError(e)}
     }
+
+    async addTransaction(id, interval, transaction) {
+        try {
+            const formattedInterval = interval.map(date => new Date(date))
+            const userTransactionsData = await User.findByIdAndUpdate(
+                {_id: new ObjectId(id)},
+                { $push: { transactions: transaction } },
+                {new: true}
+            ).select('transactions')
+            const transactions = userTransactionsData.transactions
+            return transactions.filter(transaction => transaction.date >= formattedInterval[0] && transaction.date <= formattedInterval[1])
+        } catch (e) {handleError(e)}
+    }
 }
 
 module.exports = new UserService()

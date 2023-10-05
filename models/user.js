@@ -46,7 +46,7 @@ const userSchema = new Schema ({
             default: {
                 restaurantsAndCafes: {
                     _id: new mongoose.Types.ObjectId(),
-                    name: 'estaurants and cafes',
+                    name: 'Restaurants and cafes',
                     sign: '<i class="fa-solid fa-utensils"></i>',
                     color: '#fcaa05',
                     count : 0,
