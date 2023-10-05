@@ -47,35 +47,35 @@ const userSchema = new Schema ({
                 restaurantsAndCafes: {
                     _id: new mongoose.Types.ObjectId(),
                     name: 'Restaurants and cafes',
-                    sign: '<i class="fa-solid fa-utensils"></i>',
+                    sign: 'fa-solid fa-utensils',
                     color: '#fcaa05',
                     count : 0,
                     subCategories: {
                         cafe: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Cafe',
-                            sign: '<i class="fa-solid fa-pizza-slice"></i>',
+                            sign: 'fa-solid fa-pizza-slice',
                             color: '#f7d692',
                             count : 0
                         },
                         restaurants: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Restaurants',
-                            sign: '<i class="fa-solid fa-martini-glass-citrus"></i>',
+                            sign: 'fa-solid fa-martini-glass-citrus',
                             color: '#ff5c5c',
                             count : 0
                         },
                         fastFood: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Fast food',
-                            sign: '<i class="fa-solid fa-burger"></i>',
+                            sign: 'fa-solid fa-burger',
                             color: '#ffe603',
                             count : 0
                         },
                         coffeeHouses: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Coffee houses',
-                            sign: '<i class="fa-solid fa-mug-hot"></i>',
+                            sign: 'fa-solid fa-mug-hot',
                             color: '#704001',
                             count : 0
                         }
@@ -84,21 +84,21 @@ const userSchema = new Schema ({
                 products: {
                     _id: new mongoose.Types.ObjectId(),
                     name: 'Products',
-                    sign: '<i class="fa-solid fa-cart-shopping"></i>',
+                    sign: 'fa-solid fa-cart-shopping',
                     color: '#4ce002',
                     count: 0,
                     subCategories: {
                         stores: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Stores',
-                            sign: '<i class="fa-solid fa-basket-shopping"></i>',
+                            sign: 'fa-solid fa-basket-shopping',
                             color: '#fffa78',
                             count: 0
                         },
                         delivery: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Delivery',
-                            sign: '<i class="fa-solid fa-truck-fast"></i>',
+                            sign: 'fa-solid fa-truck-fast',
                             color: '#30d3f0',
                             count: 0
                         },
@@ -107,35 +107,35 @@ const userSchema = new Schema ({
                 shopping: {
                     _id: new mongoose.Types.ObjectId(),
                     name: 'Shopping',
-                    sign: '<i class="fa-solid fa-bag-shopping"></i>',
+                    sign: 'fa-solid fa-bag-shopping',
                     color: '#903eed',
                     count: 0,
                     subCategories: {
                         clothesAndShoes: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Clothes and Shoes',
-                            sign: '<i class="fa-solid fa-shirt"></i>',
+                            sign: 'fa-solid fa-shirt',
                             color: '#70cf65',
                             count: 0
                         },
                         electronics: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Electronics',
-                            sign: '<i class="fa-solid fa-desktop"></i>',
+                            sign: 'fa-solid fa-desktop',
                             color: '#878787',
                             count: 0
                         },
                         pets: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Pets',
-                            sign: '<i class="fa-solid fa-paw"></i>',
+                            sign: 'fa-solid fa-paw',
                             color: '#ff6f00',
                             count: 0
                         },
                         forHome: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'For home',
-                            sign: '<i class="fa-solid fa-house-user"></i>',
+                            sign: 'fa-solid fa-house-user',
                             color: '#7a5221',
                             count: 0
                         }
@@ -144,28 +144,28 @@ const userSchema = new Schema ({
                 travels: {
                     _id: new mongoose.Types.ObjectId(),
                     name: 'Travels',
-                    sign: '<i class="fa-solid fa-umbrella-beach"></i>',
+                    sign: 'fa-solid fa-umbrella-beach',
                     color: '#e8e10c',
                     count: 0,
                     subCategories: {
                         hotels: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Hotels',
-                            sign: '<i class="fa-solid fa-hotel"></i>',
+                            sign: 'fa-solid fa-hotel',
                             color: '#0cd2e8',
                             count: 0
                         },
                         tickets: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Tickets',
-                            sign: '<i class="fa-solid fa-plane-up"></i>',
+                            sign: 'fa-solid fa-plane-up',
                             color: '#eb17e0',
                             count: 0
                         },
                         excursions: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Excursions',
-                            sign: '<i class="fa-solid fa-camera"></i>',
+                            sign: 'fa-solid fa-camera',
                             color: '#ffaa2b',
                             count: 0
                         },
@@ -174,28 +174,28 @@ const userSchema = new Schema ({
                 education: {
                     _id: new mongoose.Types.ObjectId(),
                     name: 'Education',
-                    sign: '<i class="fa-solid fa-graduation-cap"></i>',
+                    sign: 'fa-solid fa-graduation-cap',
                     color: '#adaba6',
                     count: 0,
                     subCategories: {
                         courses: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Courses',
-                            sign: '<i class="fa-solid fa-book-open-reader"></i>',
+                            sign: 'fa-solid fa-book-open-reader',
                             color: '#206de8',
                             count: 0
                         },
                         tutors: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Tutors',
-                            sign: '<i class="fa-solid fa-person-chalkboard"></i>',
+                            sign: 'fa-solid fa-person-chalkboard',
                             color: '#ed0e0e',
                             count: 0
                         },
                         educationalMaterials: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Educational materials',
-                            sign: '<i class="fa-solid fa-book"></i>',
+                            sign: 'fa-solid fa-book',
                             color: '#4bd406',
                             count: 0
                         },
@@ -204,28 +204,28 @@ const userSchema = new Schema ({
                 lifestyle: {
                     _id: new mongoose.Types.ObjectId(),
                     name: 'Lifestyle',
-                    sign: '<i class="fa-solid fa-person-running"></i>',
+                    sign: 'fa-solid fa-person-running',
                     color: '#d406ab',
                     count: 0,
                     subCategories: {
                         sport: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Sport',
-                            sign: '<i class="fa-solid fa-basketball"></i>',
+                            sign: 'fa-solid fa-basketball',
                             color: '#49d16d',
                             count: 0
                         },
                         hobbies: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Hobbies',
-                            sign: '<i class="fa-solid fa-gamepad"></i>',
+                            sign: 'fa-solid fa-gamepad',
                             color: '#ede60c',
                             count: 0
                         },
                          entertainment: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Entertainment',
-                            sign: '<i class="fa-solid fa-masks-theater"></i>',
+                            sign: 'fa-solid fa-masks-theater',
                             color: '#9e0ced',
                             count: 0
                         },
@@ -234,35 +234,35 @@ const userSchema = new Schema ({
                 housing: {
                     _id: new mongoose.Types.ObjectId(),
                     name: 'Housing',
-                    sign: '<i class="fa-solid fa-house-chimney"></i>',
+                    sign: 'fa-solid fa-house-chimney',
                     color: '#734906',
                     count: 0,
                     subCategories: {
                         Rent: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Rent',
-                            sign: '<i class="fa-solid fa-comments-dollar"></i>',
+                            sign: 'fa-solid fa-comments-dollar',
                             color: '#2cc9de',
                             count: 0
                         },
                         repair: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Repair',
-                            sign: '<i class="fa-solid fa-screwdriver-wrench"></i>',
+                            sign: 'fa-solid fa-screwdriver-wrench',
                             color: '#858585',
                             count: 0
                         },
                         UtilityPayments: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Utility payments',
-                            sign: '<i class="fa-solid fa-money-check-dollar"></i>',
+                            sign: 'fa-solid fa-money-check-dollar',
                             color: '#f2f213',
                             count: 0
                         },
                         insurance: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Insurance',
-                            sign: '<i class="fa-solid fa-hand-holding-dollar"></i>',
+                            sign: 'fa-solid fa-hand-holding-dollar',
                             color: '#f29407',
                             count: 0
                         },
@@ -271,21 +271,21 @@ const userSchema = new Schema ({
                 health: {
                     _id: new mongoose.Types.ObjectId(),
                     name: 'Health',
-                    sign: '<i class="fa-solid fa-heart"></i>',
+                    sign: 'fa-solid fa-heart',
                     color: '#eb4034',
                     count: 0,
                     subCategories: {
                         clinics: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Clinics',
-                            sign: '<i class="fa-solid fa-hand-holding-heart"></i>',
+                            sign: 'fa-solid fa-hand-holding-heart',
                             color: '#29cf42',
                             count: 0
                         },
                         pharmacies: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Pharmacies',
-                            sign: '<i class="fa-solid fa-pills"></i>',
+                            sign: 'fa-solid fa-pills',
                             color: '#ebe710',
                             count: 0
                         }
@@ -294,28 +294,28 @@ const userSchema = new Schema ({
                 transport: {
                     _id: new mongoose.Types.ObjectId(),
                     name: 'Transport',
-                    sign: '<i class="fa-solid fa-bus-simple"></i>',
+                    sign: 'fa-solid fa-bus-simple',
                     color: '#1224c4',
                     count: 0,
                     subCategories: {
                         public: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'ublic',
-                            sign: '<i class="fa-solid fa-train-tram"></i>',
+                            sign: 'fa-solid fa-train-tram',
                             color: '#b0ada5',
                             count: 0
                         },
                         taxi: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Taxi',
-                            sign: '<i class="fa-solid fa-taxi"></i>',
+                            sign: 'fa-solid fa-taxi',
                             color: '#fcdf03',
                             count: 0
                         },
                         rentACar: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Rent a car',
-                            sign: '<i class="fa-solid fa-car-side"></i>',
+                            sign: 'fa-solid fa-car-side',
                             color: '#9812c4',
                             count: 0
                         }
@@ -324,28 +324,28 @@ const userSchema = new Schema ({
                 payments: {
                     _id: new mongoose.Types.ObjectId(),
                     name: 'Payments',
-                    sign: '<i class="fa-solid fa-money-bill-wave"></i>',
+                    sign: 'fa-solid fa-money-bill-wave',
                     color: '#000000',
                     count: 0,
                     subCategories: {
                         subscribes: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Subscribes',
-                            sign: '<i class="fa-solid fa-star"></i>',
+                            sign: 'fa-solid fa-star',
                             color: '#d453cd',
                             count: 0
                         },
                         link: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'link',
-                            sign: '<i class="fa-solid fa-wifi"></i>',
+                            sign: 'fa-solid fa-wifi',
                             color: '#ffc128',
                             count: 0
                         },
                         commissionsToBanks: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Commissions to banks',
-                            sign: '<i class="fa-solid fa-landmark"></i>',
+                            sign: 'fa-solid fa-landmark',
                             color: '#048813',
                             count: 0
                         }
@@ -354,35 +354,35 @@ const userSchema = new Schema ({
                 personalTransport: {
                     _id: new mongoose.Types.ObjectId(),
                     name: 'Personal transport',
-                    sign: '<i class="fa-solid fa-car"></i>',
+                    sign: 'fa-solid fa-car',
                     color: '#1d90f6',
                     count: 0,
                     subCategories: {
                         repairACar: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Repair a car',
-                            sign: '<i class="fa-solid fa-hammer"></i>',
+                            sign: 'fa-solid fa-hammer',
                             color: '#424242',
                             count: 0
                         },
                         gasStation: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Gas station',
-                            sign: '<i class="fa-solid fa-gas-pump"></i>',
+                            sign: 'fa-solid fa-gas-pump',
                             color: '#e11919',
                             count: 0
                         },
                         parking: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Parking',
-                            sign: '<i class="fa-solid fa-square-parking"></i>',
+                            sign: 'fa-solid fa-square-parking',
                             color: '#32720b',
                             count: 0
                         },
                         insuranceForCar: {
                             _id: new mongoose.Types.ObjectId(),
                             name: 'Insurance for car',
-                            sign: '<i class="fa-solid fa-square-plus"></i>',
+                            sign: 'fa-solid fa-square-plus',
                             color: '#f8a502',
                             count: 0
                         }
@@ -392,14 +392,14 @@ const userSchema = new Schema ({
                     _id: new mongoose.Types.ObjectId(),
                     name: 'Presents',
                     color: '#efef4f',
-                    sign: '<i class="fa-solid fa-gift"></i>',
+                    sign: 'fa-solid fa-gift',
                     count: 0
                 },
                 charity: {
                     _id: new mongoose.Types.ObjectId(),
                     name: 'Charity',
                     color: '#FFD700',
-                    sign: '<i class="fa-solid fa-hands-holding-child"></i>',
+                    sign: 'fa-solid fa-hands-holding-child',
                     count: 0
                 }
             }
@@ -411,21 +411,21 @@ const userSchema = new Schema ({
                 gifts: {
                     _id: new mongoose.Types.ObjectId(),
                     name: 'Gifts',
-                    sign: '<i class="fa-solid fa-gift"></i>',
+                    sign: 'fa-solid fa-gift',
                     color: '#efef4f',
                     count: 0
                 },
                 salary: {
                     _id: new mongoose.Types.ObjectId(),
                     name: 'Salary',
-                    sign: '<i class="fa-solid fa-money-bill"></i>',
+                    sign: 'fa-solid fa-money-bill',
                     color: '#32d202',
                     count: 0
                 },
                 refunds: {
                     _id: new mongoose.Types.ObjectId(),
                     name: 'Refunds',
-                    sign: '<i class="fa-solid fa-arrow-rotate-left"></i>',
+                    sign: 'fa-solid fa-arrow-rotate-left',
                     color: '#c322ee',
                     count: 0
                 }
