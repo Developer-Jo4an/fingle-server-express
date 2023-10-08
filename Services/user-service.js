@@ -39,6 +39,19 @@ class UserService {
             return transactions.filter(transaction => transaction.date >= formattedInterval[0] && transaction.date <= formattedInterval[1])
         } catch (e) {handleError(e)}
     }
+    
+    async deleteTransaction(id, transactionId, interval) {
+        try {
+            const formattedInterval = interval.map(str => new Date(str))
+            const response = await User.findByIdAndUpdate(
+                {_id: new ObjectId(id)},
+                {$pull: {transactions: { _id: transactionId }}},
+                {new: true}
+            )
+            const {transactions} = response
+            return transactions.filter(transaction => transaction.date >= formattedInterval[0] && transaction.date <= formattedInterval[1])
+        } catch (e) {handleError(e)}
+    }
 }
 
 module.exports = new UserService()

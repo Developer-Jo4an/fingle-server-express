@@ -39,6 +39,18 @@ class UserController {
             res.json(newTransactions)
         } catch (e) {handleError(e, res)}
     }
+
+    async delTransaction(req ,res) {
+        try {
+            const {id} = req.params
+            !id ? res.status(404).json({message: 'Invalid id'}) : null
+            const {interval, transactionId} = req.body
+            console.log(interval)
+            console.log(transactionId)
+            const newTransactions = await UserService.deleteTransaction(id, transactionId, interval)
+            res.json(newTransactions)
+        } catch (e) {handleError(e, res)}
+    }
 }
 
 module.exports = new UserController()
