@@ -8,7 +8,9 @@ router.get('/get-user-info/:id', UserController.getUserInfo)
 // post
 router.post('/:id/get-transactions', UserController.getTransactions)
 router.post('/:id/add-transaction', UserController.addTransaction)
-//delete
+// delete
 router.delete('/:id/del-transaction', UserController.delTransaction)
+// put
+router.put('/:id/modified-transaction', UserController.modifiedTransaction)
 module.exports = router
 

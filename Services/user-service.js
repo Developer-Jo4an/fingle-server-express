@@ -52,6 +52,21 @@ class UserService {
             return transactions.filter(transaction => transaction.date >= formattedInterval[0] && transaction.date <= formattedInterval[1])
         } catch (e) {handleError(e)}
     }
+
+    async modifiedTransaction(id, interval, transaction) {
+        try {
+            const formattedInterval = interval.map(str => new Date(str))
+            console.log(formattedInterval)
+            const response = await User.findOneAndUpdate(
+                { _id: new ObjectId(id), 'transactions._id': transaction._id },
+                { $set: { 'transactions.$': transaction } },
+                { new: true, select: { transactions: 1 } }
+            )
+            console.log(response)
+            const {transactions} = response
+            return transactions.filter(transaction => transaction.date >= formattedInterval[0] && transaction.date <= formattedInterval[1])
+        } catch (e) {handleError(e)}
+    }
 }
 
 module.exports = new UserService()
