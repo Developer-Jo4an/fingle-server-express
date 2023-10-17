@@ -8,13 +8,10 @@ const mongoose = require('mongoose')
 const fileUpload = require('express-fileupload')
 const cors = require('cors')
 
-const {indexDir} = require('./index-path/index-path')
 app.use(cors())
 app.use(fileUpload({}))
 app.use(express.json())
-
 app.use(express.static('public'))
-
 app.use(router)
 
 app.use((err, req, res, next) => {

@@ -34,8 +34,8 @@ class UserController {
         try {
             const {id} = req.params
             !id ? res.status(404).json({message: 'Invalid id'}) : null
-            const {interval, transaction} = req.body
-            const newTransactions = await UserService.addTransaction(id, interval, transaction)
+            const {transaction} = req.body
+            const newTransactions = await UserService.addTransaction(id, transaction)
             res.json(newTransactions)
         } catch (e) {handleError(e, res)}
     }
