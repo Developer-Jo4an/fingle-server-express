@@ -4,6 +4,7 @@
   "description": "fingle server",
   "main": "server.js",
   "scripts": {
+    "start": "server.js",
     "dev": "nodemon server.js"
   },
   "author": "Bondarenko Matthew <Joh4n.Libert@yandex.ru>",
