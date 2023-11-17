@@ -21,7 +21,7 @@ app.use((err, req, res, next) => {
 
 (async () => {
    try {
-       await mongoose.connect(process.env.DB)
+       await mongoose.connect('mongodb+srv://joh4n:Kot1902kot2606@fingle.kv5njwb.mongodb.net/?retryWrites=true&w=majority')
        app.listen(PORT)
    } catch (e) {console.log(e)}
 })()
