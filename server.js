@@ -1,11 +1,17 @@
-const dotenv = require('dotenv')
-dotenv.config()
-const PORT = 5000
 const express = require('express')
 const app = express()
+
+const PORT = process.env.PORT || 5000
+
+const dotenv = require('dotenv')
+dotenv.config()
+
 const router = require('./router/router')
+
 const mongoose = require('mongoose')
+
 const fileUpload = require('express-fileupload')
+
 const cors = require('cors')
 
 app.use(cors())
@@ -21,8 +27,8 @@ app.use((err, req, res, next) => {
 
 (async () => {
    try {
-       await mongoose.connect('mongodb+srv://joh4n:Kot1902kot2606@fingle.kv5njwb.mongodb.net/?retryWrites=true&w=majority')
-       await app.listen(PORT)
-       console.log('Server started on port 5000')
-   } catch (e) {console.log(e)}
+       await mongoose.connect(process.env.DB)
+       app.listen(PORT)
+       console.log(`Server started on PORT ${PORT}`)
+   } catch (e) { console.log(e) }
 })()
