@@ -300,7 +300,7 @@ const userSchema = new Schema ({
                     subCategories: {
                         public: {
                             _id: new mongoose.Types.ObjectId(),
-                            name: 'ublic',
+                            name: 'Public',
                             sign: 'fa-solid fa-train-tram',
                             color: '#b0ada5',
                             count: 0
