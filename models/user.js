@@ -36,6 +36,10 @@ const userSchema = new Schema ({
     allCards: [cardSchema],
     contributions: [contributionSchema],
     investments: [investmentSchema],
+    subscriptionLevel: {
+        type: String,
+        default: 'Standard'
+    },
     debts: [debtSchema],
     purposes: [purposeSchema],
     transactions: [transactionSchema],
