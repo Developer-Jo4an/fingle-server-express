@@ -92,6 +92,13 @@ const transactionSchema = new Schema ({
     }
 })
 
+const storiesSchema = new Schema({
+    img: Buffer,
+    header: String,
+    description: String,
+    background: Buffer
+})
+
 const Purpose = new mongoose.model('Purpose', purposeSchema)
 const Card = new mongoose.model('Card', cardSchema)
 const Contribution = new mongoose.model('Contribution', contributionSchema)
@@ -99,6 +106,8 @@ const Investment = new mongoose.model('Investment', investmentSchema)
 const Debt = new mongoose.model('Debt', debtSchema)
 const Transaction = new mongoose.model('Transaction', transactionSchema)
 const Category = new mongoose.model('Category', categorySchema)
+const Story = new mongoose.model('Story', storiesSchema)
+
 
 module.exports = {
     schemes: {
@@ -108,7 +117,8 @@ module.exports = {
     investmentSchema,
     debtSchema,
     purposeSchema,
-    transactionSchema
+    transactionSchema,
+    storiesSchema
     },
     models: {
         Purpose,
@@ -117,6 +127,7 @@ module.exports = {
         Investment,
         Debt,
         Transaction,
-        Category
+        Category,
+        Story
     }
 }
