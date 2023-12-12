@@ -18,10 +18,11 @@ const categorySchema = new Schema({
     }
 })
 
-const cardSchema = new Schema({
-    cardName: { type: String, required: true },
+const accountSchema = new Schema({
+    accountName: { type: String, required: true },
+    accountType: { type: String, required: true },
     count: { type: Number, required: true },
-    bankName: { type: String, required: true },
+    keeperName: { type: String, required: true },
     toTotal: { type: Boolean, required: true }
 })
 
@@ -57,16 +58,16 @@ const purposeSchema = new Schema ({
 const transactionSchema = new Schema ({
     transactionType: {type: String, required: true},
     date: {type: Date, required: true},
-    card: {
+    account: {
         type: Object,
         of: {
             _id: Schema.Types.ObjectId,
-            cardName: String,
-            bankName: String,
+            accountName: String,
+            keeperName: String,
         },
         required: true
     },
-    transferCard: {_id: String, cardName: String, bankName: String},
+    transferAccount: {_id: String, accountName: String, keeperName: String},
     count: {type: Number, required: true},
     message: String,
     category: {
@@ -100,7 +101,7 @@ const storiesSchema = new Schema({
 })
 
 const Purpose = new mongoose.model('Purpose', purposeSchema)
-const Card = new mongoose.model('Card', cardSchema)
+const Account = new mongoose.model('Card', accountSchema)
 const Contribution = new mongoose.model('Contribution', contributionSchema)
 const Investment = new mongoose.model('Investment', investmentSchema)
 const Debt = new mongoose.model('Debt', debtSchema)
@@ -112,7 +113,7 @@ const Story = new mongoose.model('Story', storiesSchema)
 module.exports = {
     schemes: {
     categorySchema,
-    cardSchema,
+    accountSchema,
     contributionSchema,
     investmentSchema,
     debtSchema,
@@ -122,7 +123,7 @@ module.exports = {
     },
     models: {
         Purpose,
-        Card,
+        Account,
         Contribution,
         Investment,
         Debt,

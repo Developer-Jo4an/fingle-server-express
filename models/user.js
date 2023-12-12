@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const {schemes} = require('./schemes/schemes')
+const { schemes } = require('./schemes/schemes')
 const {
     categorySchema,
-    cardSchema,
+    accountSchema,
     contributionSchema,
     investmentSchema,
     debtSchema,
@@ -33,7 +33,10 @@ const userSchema = new Schema ({
     birthDay: Date,
     gender: String,
     avatar: Buffer,
-    allCards: [cardSchema],
+    accounts: {
+        type: [accountSchema],
+        default: [{_id: new mongoose.Types.ObjectId(), accountName: 'Cash', accountType: 'cash', count: 0, keeperName: 'Wallet', toTotal: true}]
+    },
     contributions: [contributionSchema],
     investments: [investmentSchema],
     subscriptionLevel: {

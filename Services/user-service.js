@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const ObjectId = mongoose.Types.ObjectId
 
 const { models } = require('../models/schemes/schemes')
-const { Purpose, Card, Contribution, Investment, Debt, Transaction, Category } = models
+const { Purpose, Account, Contribution, Investment, Debt, Transaction, Category } = models
 const User = require('../models/user')
 const { ErrorServiceHandler } = require('../error-handlers/error-handlers')
 
@@ -18,15 +18,15 @@ class UserService {
 
     async addTransaction(id, transaction) {
         try {
-            const { card, count, transactionType, transferCard } = transaction
+            const { account, count, transactionType, transferAccount } = transaction
             // functions
             const changes = () => ({
-                expense: { $inc: { 'allCards.$[card].count': -count } },
-                income: { $inc: { 'allCards.$[card].count': count } },
+                expense: { $inc: { 'accounts.$[account].count': -count } },
+                income: { $inc: { 'accounts.$[account].count': count } },
                 transfer: {
                     $inc: {
-                        'allCards.$[card].count': -count,
-                        'allCards.$[transferCard].count': count
+                        'accounts.$[account].count': -count,
+                        'accounts.$[transferAccount].count': count
                     }
                 }
             })
@@ -34,7 +34,7 @@ class UserService {
             const settings = () => transactionType !== 'transfer' ?
                 []
                 :
-                [{ 'transferCard._id': new ObjectId(transferCard._id) }]
+                [{ 'transferAccount._id': new ObjectId(transferAccount._id) }]
             // functions
             const userData = await User.findOneAndUpdate(
                 { _id: new ObjectId(id) },
@@ -44,14 +44,14 @@ class UserService {
                 },
                 {
                     new: true,
-                    projection: { transactions: 1, allCards: 1 },
-                    arrayFilters: [{ 'card._id': new ObjectId(card._id) }, ...settings()]
+                    projection: { transactions: 1, accounts: 1 },
+                    arrayFilters: [{ 'account._id': new ObjectId(account._id) }, ...settings()]
                 }
             )
 
-            const checker = () => Array.isArray(userData.transactions) && Array.isArray(userData.allCards)
+            const checker = () => Array.isArray(userData.transactions) && Array.isArray(userData.accounts)
 
-            if ( checker() ) return { status: true, transactions: userData.transactions, allCards: userData.allCards }
+            if ( checker() ) return { status: true, transactions: userData.transactions, accounts: userData.accounts }
             else throw new Error('Checker was not passed (server)')
 
         } catch (e) { return ErrorServiceHandler.addTransaction(e) }
@@ -60,25 +60,25 @@ class UserService {
     async deleteTransaction(id, transactionId) {
         try {
             const remoteTransactions = await User.findOne(
-                { _id: new ObjectId(id), "transactions._id": new ObjectId(transactionId) },
+                { _id: new ObjectId(id), 'transactions._id': new ObjectId(transactionId) },
                 { 'transactions.$': 1 }
             )
             const remoteTransaction = remoteTransactions.transactions[0]
-            const { transactionType, card, count, transferCard } = remoteTransaction
+            const { transactionType, account, count, transferAccount } = remoteTransaction
 
             // functions
             const changes = () => {
-                const settingsObj = { 'allCards.$[card].count': transactionType !== 'income' ? count : -count }
+                const settingsObj = { 'accounts.$[account].count': transactionType !== 'income' ? count : -count }
                 transactionType === 'transfer' ?
-                    settingsObj['allCards.$[cardTransfer].count'] = -count
+                    settingsObj['accounts.$[accountTransfer].count'] = -count
                     :
                     null
                 return { $inc: { ...settingsObj } }
             }
             const arrayFilters = () => {
-                const array = [{ 'card._id': new ObjectId(card._id) }]
+                const array = [{ 'account._id': new ObjectId(account._id) }]
                 transactionType === 'transfer' ?
-                    array.push({ 'cardTransfer._id': new ObjectId(transferCard._id) })
+                    array.push({ 'accountTransfer._id': new ObjectId(transferAccount._id) })
                     :
                     null
                 return array
@@ -92,15 +92,15 @@ class UserService {
                     ...changes()
                 },
                 {
-                    projection: { transactions: 1, allCards: 1 },
+                    projection: { transactions: 1, accounts: 1 },
                     arrayFilters: arrayFilters(),
                     new: true
                 }
             )
 
-            const checker = () => Array.isArray(userData.transactions) && Array.isArray(userData.allCards)
+            const checker = () => Array.isArray(userData.transactions) && Array.isArray(userData.accounts)
 
-            if ( checker() ) return { status: true, transactions: userData.transactions, allCards: userData.allCards }
+            if ( checker() ) return { status: true, transactions: userData.transactions, accounts: userData.accounts }
             else throw new Error('Checker was not passed (server)')
 
         } catch (e) { return ErrorServiceHandler.deleteTransaction(e) }
