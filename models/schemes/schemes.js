@@ -22,8 +22,6 @@ const accountSchema = new Schema({
     accountName: { type: String, required: true },
     accountType: { type: String, required: true },
     count: { type: Number, required: true },
-    keeperName: { type: String, required: true },
-    toTotal: { type: Boolean, required: true }
 })
 
 const contributionSchema = new Schema({
@@ -63,11 +61,10 @@ const transactionSchema = new Schema ({
         of: {
             _id: Schema.Types.ObjectId,
             accountName: String,
-            keeperName: String,
         },
         required: true
     },
-    transferAccount: {_id: String, accountName: String, keeperName: String},
+    transferAccount: {_id: String, accountName: String},
     count: {type: Number, required: true},
     message: String,
     category: {

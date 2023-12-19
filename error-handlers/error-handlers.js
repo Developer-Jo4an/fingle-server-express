@@ -13,6 +13,10 @@ class ErrorServiceHandler {
         console.log('Delete transaction error', e.message)
         return { status: false, message: 'Failed to delete transaction (500)' }
     }
+    addAccount(e) {
+        console.log('Add account error', e.message)
+        return { status: false, message: 'Failed to add account (500)' }
+    }
 }
 
 class ErrorControllerHandler {

@@ -57,6 +57,31 @@ class UserService {
         } catch (e) { return ErrorServiceHandler.addTransaction(e) }
     }
 
+    async addAccount(id, account) {
+        try {
+            if (
+                typeof account.accountName === 'string'
+                && account.accountName.length >= 1 && account.accountName.length <= 30
+                && typeof account.count === 'number'
+                && account.count !== 'NaN'
+                && (account.accountType === 'cash' || account.accountType === 'card')
+            ) {
+                const userData = await User.findByIdAndUpdate(
+                    { _id: new ObjectId(id) },
+                    { $push: { accounts: account } },
+                    { new: true, projection: { accounts: 1 } }
+                )
+                const { accounts } = userData
+
+                const checker = () => Array.isArray(accounts) || accounts.length
+
+                if ( checker() ) return { status: true, accounts }
+                else throw new Error('Incorrect account data from server!')
+
+            } else throw new Error('Incorrect account data from client!')
+        } catch (e) { return ErrorServiceHandler.addAccount(e) }
+    }
+
     async deleteTransaction(id, transactionId) {
         try {
             const remoteTransactions = await User.findOne(
