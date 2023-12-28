@@ -17,6 +17,14 @@ class ErrorServiceHandler {
         console.log('Add account error', e.message)
         return { status: false, message: 'Failed to add account (500)' }
     }
+    deleteAccount(e) {
+        console.log('Delete account error', e.message)
+        return { status: false, message: 'Failed to delete account (500)' }
+    }
+    modifiedAccount(e) {
+        console.log('Modified account error', e.message)
+        return { status: false, message: 'Failed to delete account (500)' }
+    }
 }
 
 class ErrorControllerHandler {

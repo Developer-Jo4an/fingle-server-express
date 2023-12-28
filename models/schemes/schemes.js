@@ -22,6 +22,7 @@ const accountSchema = new Schema({
     accountName: { type: String, required: true },
     accountType: { type: String, required: true },
     count: { type: Number, required: true },
+    deleted: { type: Boolean, required: true }
 })
 
 const contributionSchema = new Schema({
@@ -39,23 +40,23 @@ const investmentSchema = new Schema({
 })
 
 const debtSchema = new Schema({
-    img:{type : String,required:true},
-    debtTarget:{type : String,required:true},
-    debtType:{type : String,required:true},
-    progress:{type : [Number],required:true},
-    deadLine:{type : Date,required:true}
+    img: { type : String, required:true },
+    debtTarget: { type : String, required:true },
+    debtType: { type : String, required:true },
+    progress: { type : [Number], required:true },
+    deadLine: { type : Date, required:true }
 })
 
 const purposeSchema = new Schema ({
-    img:{type : String,required:true},
-    progress:{type : [Number],required:true},
-    purposeName:{type : String,required:true},
-    deadLine:{type : Date,required:true}
+    img: { type : String, required:true },
+    progress: { type : [Number], required:true },
+    purposeName: { type : String, required:true },
+    deadLine: { type : Date, required:true }
 })
 
 const transactionSchema = new Schema ({
-    transactionType: {type: String, required: true},
-    date: {type: Date, required: true},
+    transactionType: { type: String, required: true },
+    date: { type: Date, required: true },
     account: {
         type: Object,
         of: {
@@ -64,8 +65,8 @@ const transactionSchema = new Schema ({
         },
         required: true
     },
-    transferAccount: {_id: String, accountName: String},
-    count: {type: Number, required: true},
+    transferAccount: { _id: String, accountName: String },
+    count: { type: Number, required: true },
     message: String,
     category: {
         type: Object,
@@ -105,7 +106,6 @@ const Debt = new mongoose.model('Debt', debtSchema)
 const Transaction = new mongoose.model('Transaction', transactionSchema)
 const Category = new mongoose.model('Category', categorySchema)
 const Story = new mongoose.model('Story', storiesSchema)
-
 
 module.exports = {
     schemes: {

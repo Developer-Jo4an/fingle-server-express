@@ -35,7 +35,7 @@ const userSchema = new Schema ({
     avatar: Buffer,
     accounts: {
         type: [accountSchema],
-        default: [{_id: new mongoose.Types.ObjectId(), accountName: 'Cash', accountType: 'cash', count: 0}]
+        default: [{ _id: '260627062003200315265252', accountName: 'Cash', accountType: 'cash', count: 0, deleted: false }]
     },
     contributions: [contributionSchema],
     investments: [investmentSchema],

@@ -5,6 +5,7 @@ const { models } = require('../models/schemes/schemes')
 const { Purpose, Account, Contribution, Investment, Debt, Transaction, Category } = models
 const User = require('../models/user')
 const { ErrorServiceHandler } = require('../error-handlers/error-handlers')
+const {add} = require('nodemon/lib/rules');
 
 class UserService {
     async getUserInfo (id) {
@@ -68,7 +69,7 @@ class UserService {
             ) {
                 const userData = await User.findByIdAndUpdate(
                     { _id: new ObjectId(id) },
-                    { $push: { accounts: account } },
+                    { $push: { accounts: {...account, deleted: true } } },
                     { new: true, projection: { accounts: 1 } }
                 )
                 const { accounts } = userData
@@ -129,6 +130,73 @@ class UserService {
             else throw new Error('Checker was not passed (server)')
 
         } catch (e) { return ErrorServiceHandler.deleteTransaction(e) }
+    }
+
+    async deleteAccount(id, accountId) {
+        try {
+            if (accountId === '260627062003200315265252') throw new Error('This account cannot be deleted!')
+
+            const userData = await User.findOneAndUpdate(
+                { _id: new ObjectId(id) },
+                { $pull: { accounts: { _id: new ObjectId(accountId) } } },
+                {
+                    projection: { accounts: 1 },
+                    new: true
+                }
+            )
+
+            const checker = () => Array.isArray(userData.accounts) && userData.accounts.length > 0
+
+            if ( checker() ) return { status: true, accounts: userData.accounts }
+            else throw new Error('Checker was not passed (server)')
+
+        } catch (e) { return ErrorServiceHandler.deleteAccount(e) }
+    }
+
+    async modifiedAccount(id, account) {
+        try {
+            const { _id } = account
+
+            const delResult = await this.deleteAccount(id, _id)
+            const addResult = await this.addAccount(id, account)
+
+            if (delResult.status && addResult.status) {
+
+                const userData = await User.findById({ _id: new ObjectId(id) }, { transactions: 1 })
+                const { transactions } = userData
+
+                const updatedTransactions = transactions.map(transaction => {
+                    const { transactionType, transferAccount } = transaction
+                    const currentId = transaction._id
+                    const currentAccount = transaction.account
+
+                    if ((transactionType === 'expense' || transactionType === 'income') && currentId === account._id)
+                        return { ...transaction, account: { ...currentAccount, accountName: account.accountName }}
+                    else if (transactionType === 'transfer') {
+                        if (currentId === account._id) return { ...transaction, account: { ...currentAccount, accountName: account.accountName }}
+                        if (transferAccount === account._id) return { ...transaction, transferAccount: { ...transferAccount, accountName: account.accountName }}
+                    }
+                })
+
+                console.log(updatedTransactions)
+
+                const lastUserData = await User.findByIdAndUpdate(
+                    { _id: new ObjectId(id) },
+                    { $set: { transactions:  updatedTransactions } },
+                    {
+                        projection: { transactions: 1, accounts: 1 },
+                        new: true
+                    }
+                )
+
+                const checker = () => Array.isArray(lastUserData.transactions) && Array.isArray(lastUserData.accounts) && lastUserData.accounts.length
+
+                if ( checker() ) return { status: true, transactions: lastUserData.transactions, accounts: userData.accounts }
+                else throw new Error('Checker was not passed (server)')
+
+            } else throw new Error('Del || Add action was destroyed!')
+
+        } catch (e) { return ErrorServiceHandler.modifiedAccount(e) }
     }
 }
 
